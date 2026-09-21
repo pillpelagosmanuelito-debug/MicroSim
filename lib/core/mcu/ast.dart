@@ -1,11 +1,11 @@
-/// AST del subconjunto de "Arduino basico" que MicroSim interpreta.
+/// AST del subconjunto de "Arduino básico" que MicroSim interpreta.
 ///
 /// Alcance deliberado del MVP (ver docs/03_Arquitectura_Tecnica.md):
 /// dos funciones fijas (setup/loop), tipos int y bool, if/for/while,
-/// operadores aritmeticos/logicos/comparacion, y las funciones nativas
+/// operadores aritméticos/lógicos/comparación, y las funciones nativas
 /// de Arduino (pinMode, digitalWrite, digitalRead, analogWrite,
 /// analogRead, delay, Serial.begin, Serial.println). Sin arrays, sin
-/// funciones propias con parametros, sin #include, sin clases.
+/// funciones propias con parámetros, sin #include, sin clases.
 
 // ---------------------------------------------------------------------
 // Sentencias

@@ -39,12 +39,12 @@ class _ComunicacionScreenState extends ConsumerState<ComunicacionScreen> {
     );
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Modulo 5 · Comunicacion')),
+      appBar: AppBar(title: const Text('Módulo 5 · Comunicación')),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
           const Text(
-            'Serial.begin/println envian datos al monitor serial de la '
+            'Serial.begin/println envían datos al monitor serial de la '
             'computadora, igual que en un Arduino conectado por USB. '
             'Sensor simulado en A1.',
           ),

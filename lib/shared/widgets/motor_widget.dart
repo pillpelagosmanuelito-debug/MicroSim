@@ -4,7 +4,7 @@ import '../../theme/app_theme.dart';
 
 /// Representa un motor DC (o un LED de brillo variable) controlado por
 /// PWM: barra de "velocidad/brillo" de 0 a 255, con el icono girando
-/// simbolicamente cuando hay senal.
+/// simbólicamente cuando hay señal.
 class MotorWidget extends StatelessWidget {
   const MotorWidget({
     super.key,

@@ -17,7 +17,7 @@ class _ModuloInfo {
   final Widget pantalla;
 }
 
-/// Portada con una grilla de 5 modulos (2 columnas), visualmente
+/// Portada con una grilla de 5 módulos (2 columnas), visualmente
 /// distinta a la lista vertical de tarjetas de OscilloLab y a la
 /// portada de CircuitLab Academy/CircuitAR.
 class InicioScreen extends ConsumerWidget {
@@ -48,7 +48,7 @@ class InicioScreen extends ConsumerWidget {
       const _ModuloInfo('m4', 'Sensores', Icons.sensors, SensoresScreen()),
       const _ModuloInfo(
         'm5',
-        'Comunicacion',
+        'Comunicación',
         Icons.cable,
         ComunicacionScreen(),
       ),
@@ -76,7 +76,7 @@ class InicioScreen extends ConsumerWidget {
               const SizedBox(width: 16),
               const Expanded(
                 child: Text(
-                  'Programa una placa simulada y observa como tu codigo '
+                  'Programa una placa simulada y observa cómo tu código '
                   'controla LEDs, sensores y motores en tiempo real.',
                 ),
               ),

@@ -2,8 +2,8 @@ import 'ast.dart';
 import 'mcu_exceptions.dart';
 import 'mcu_state.dart';
 
-/// Evaluador del AST de "Arduino basico" contra un [MCUState] simulado.
-/// Puerto directo (misma logica, sentencia por sentencia) del prototipo
+/// Evaluador del AST de "Arduino básico" contra un [MCUState] simulado.
+/// Puerto directo (misma lógica, sentencia por sentencia) del prototipo
 /// validado en `calib/interpreter_prototype.py`.
 class Interpreter {
   Interpreter(this.programa, this.state, {this.maxPasos = 20000})
@@ -28,8 +28,8 @@ class Interpreter {
     _pasos++;
     if (_pasos > maxPasos) {
       throw LimiteDePasosExcedido(
-        'El programa supero el limite de $maxPasos pasos de ejecucion. '
-        'Revisa si algun while/for no tiene una condicion de salida '
+        'El programa superó el límite de $maxPasos pasos de ejecución. '
+        'Revisa si algún while/for no tiene una condición de salida '
         '(bucle infinito).',
       );
     }
@@ -90,7 +90,7 @@ class Interpreter {
   bool _comoBool(Object? v) {
     if (v is bool) return v;
     if (v is int) return v != 0;
-    throw ErrorEjecucion('Se esperaba una condicion booleana, se obtuvo: $v');
+    throw ErrorEjecucion('Se esperaba una condición booleana, se obtuvo: $v');
   }
 
   Object? _evaluar(Expr expr, Map<String, Object?> scope) {
@@ -109,7 +109,7 @@ class Interpreter {
       throw ErrorEjecucion('Operador unario no soportado: ${expr.operador}');
     }
     if (expr is Llamada) return _evaluarLlamada(expr, scope);
-    throw ErrorEjecucion('Expresion no soportada: ${expr.runtimeType}');
+    throw ErrorEjecucion('Expresión no soportada: ${expr.runtimeType}');
   }
 
   Object? _evaluarBinaria(OperacionBinaria expr, Map<String, Object?> scope) {
@@ -129,7 +129,7 @@ class Interpreter {
       case '*':
         return (izq as int) * (der as int);
       case '/':
-        if ((der as int) == 0) throw ErrorEjecucion('Division entre cero.');
+        if ((der as int) == 0) throw ErrorEjecucion('División entre cero.');
         return (izq as int) ~/ der;
       case '%':
         return (izq as int) % (der as int);
@@ -176,7 +176,7 @@ class Interpreter {
         final int pin = _validarPin(args[0] as int);
         if (!MCUState.pinesConPwm.contains(pin)) {
           throw ErrorEjecucion(
-            'El pin $pin no soporta PWM (analogWrite). Pines validos: '
+            'El pin $pin no soporta PWM (analogWrite). Pines válidos: '
             '${MCUState.pinesConPwm.join(", ")}.',
           );
         }
@@ -189,7 +189,7 @@ class Interpreter {
         final int pin = args[0] as int;
         if (pin < 0 || pin > 5) {
           throw ErrorEjecucion(
-            'Pin analogico invalido: A$pin (valido: A0-A5).',
+            'Pin analógico inválido: A$pin (válido: A0-A5).',
           );
         }
         return state.entradaAnalogica[pin] ?? 0;
@@ -207,16 +207,16 @@ class Interpreter {
 
       default:
         throw ErrorEjecucion(
-          'Funcion no reconocida: "${llamada.nombre}". Este es un subconjunto '
+          'Función no reconocida: "${llamada.nombre}". Este es un subconjunto '
           'simplificado de Arduino: revisa la lista de funciones soportadas '
-          'en el Modulo 1.',
+          'en el Módulo 1.',
         );
     }
   }
 
   int _validarPin(int pin) {
     if (pin < 0 || pin > 13) {
-      throw ErrorEjecucion('Pin digital invalido: $pin (valido: 0-13).');
+      throw ErrorEjecucion('Pin digital inválido: $pin (válido: 0-13).');
     }
     return pin;
   }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../theme/app_theme.dart';
 
-/// Consola/monitor serial: muestra errores de compilacion/ejecucion o
+/// Consola/monitor serial: muestra errores de compilación/ejecución o
 /// la salida de Serial.println, imitando el Monitor Serie del IDE de
 /// Arduino real.
 class ConsolaWidget extends StatelessWidget {
@@ -25,7 +25,7 @@ class ConsolaWidget extends StatelessWidget {
       ),
       child: lineas.isEmpty
           ? Text(
-              'Sin salida todavia. Presiona "Ejecutar".',
+              'Sin salida todavía. Presiona "Ejecutar".',
               style: AppTheme.textoCodigo.copyWith(color: Colors.white38),
             )
           : ListView(

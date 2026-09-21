@@ -38,12 +38,12 @@ class _SensoresScreenState extends ConsumerState<SensoresScreen> {
     final SensoresNotifier notifier = ref.read(sensoresProvider.notifier);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Modulo 4 · Sensores')),
+      appBar: AppBar(title: const Text('Módulo 4 · Sensores')),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
           const Text(
-            'Sensor analogico simulado en A0 (potenciometro o LDR). '
+            'Sensor analógico simulado en A0 (potenciómetro o LDR). '
             'analogRead(0) devuelve un entero de 0 a 1023.',
           ),
           const SizedBox(height: 12),

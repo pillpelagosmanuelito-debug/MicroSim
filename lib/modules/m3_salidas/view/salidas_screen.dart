@@ -39,7 +39,7 @@ class _SalidasScreenState extends ConsumerState<SalidasScreen> {
     final SalidasNotifier notifier = ref.read(salidasProvider.notifier);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Modulo 3 · Salidas digitales')),
+      appBar: AppBar(title: const Text('Módulo 3 · Salidas digitales')),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
@@ -85,7 +85,7 @@ class _SalidasScreenState extends ConsumerState<SalidasScreen> {
           if (estado.state != null && estado.lineaDeTiempo.isNotEmpty) ...[
             const SizedBox(height: 12),
             Text(
-              'Linea de tiempo (pin 13)',
+              'Línea de tiempo (pin 13)',
               style: Theme.of(context).textTheme.titleSmall,
             ),
             const SizedBox(height: 6),

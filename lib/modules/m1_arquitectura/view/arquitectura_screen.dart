@@ -10,13 +10,13 @@ class ArquitecturaScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Modulo 1 · Arquitectura MCU')),
+      appBar: AppBar(title: const Text('Módulo 1 · Arquitectura MCU')),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
           const Text(
-            'Antes de programar un microcontrolador conviene entender que '
-            'hay dentro: CPU, memoria, pines y alimentacion.',
+            'Antes de programar un microcontrolador conviene entender qué '
+            'hay dentro: CPU, memoria, pines y alimentación.',
           ),
           const SizedBox(height: 16),
           ...catalogoArquitectura.map(

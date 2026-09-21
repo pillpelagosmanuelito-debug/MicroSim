@@ -80,12 +80,12 @@ class EntradasNotifier extends Notifier<EntradasState> {
       explicacion = CodeExplainer.explicar(programa);
       advertencias = CodeExplainer.advertencias(programa);
     } catch (_) {
-      // Si el codigo no compila, ejecutarPrograma ya reporta el error;
+      // Si el código no compila, ejecutarPrograma ya reporta el error;
       // el explicador simplemente no tiene nada que mostrar.
     }
 
     // Se reconstruye el estado completo (en vez de usar copyWith) para
-    // que un exito limpie un error previo y viceversa sin ambiguedad.
+    // que un éxito limpie un error previo y viceversa sin ambigüedad.
     state = EntradasState(
       codigo: state.codigo,
       botonPresionado: state.botonPresionado,

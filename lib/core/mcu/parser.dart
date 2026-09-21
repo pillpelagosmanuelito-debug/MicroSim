@@ -2,8 +2,8 @@ import 'ast.dart';
 import 'lexer.dart';
 import 'mcu_exceptions.dart';
 
-/// Analizador sintactico descendente recursivo para el subconjunto de
-/// "Arduino basico" de MicroSim. La gramatica es identica, sentencia
+/// Analizador sintáctico descendente recursivo para el subconjunto de
+/// "Arduino básico" de MicroSim. La gramática es idéntica, sentencia
 /// por sentencia y precedencia por precedencia, a la validada en
 /// `calib/interpreter_prototype.py`.
 class Parser {
@@ -27,7 +27,7 @@ class Parser {
     if (!tipoOk || !simboloOk) {
       final String esperado = simbolo ?? tipo.name;
       throw ErrorSintactico(
-        'Se esperaba "$esperado" pero se encontro "${t.valor}" en la posicion ${t.posicion}.',
+        'Se esperaba "$esperado" pero se encontró "${t.valor}" en la posición ${t.posicion}.',
       );
     }
     return _avanzar();
@@ -93,7 +93,7 @@ class Parser {
         _esperar(TipoToken.simbolo, simbolo: ';');
         return SentenciaExpr(expr);
       }
-      throw ErrorSintactico('Sentencia invalida cerca de "${_actual.valor}".');
+      throw ErrorSintactico('Sentencia inválida cerca de "${_actual.valor}".');
     }
     throw ErrorSintactico('Sentencia inesperada: "${_actual.valor}".');
   }
@@ -267,7 +267,7 @@ class Parser {
       return expr;
     }
     throw ErrorSintactico(
-      'Expresion inesperada: "${t.valor}" en la posicion ${t.posicion}.',
+      'Expresión inesperada: "${t.valor}" en la posición ${t.posicion}.',
     );
   }
 }

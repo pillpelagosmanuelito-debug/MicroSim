@@ -15,7 +15,7 @@ void main() {
     expect(find.textContaining('Entradas'), findsWidgets);
     expect(find.textContaining('Salidas'), findsWidgets);
     expect(find.text('Sensores'), findsOneWidget);
-    expect(find.text('Comunicacion'), findsOneWidget);
+    expect(find.text('Comunicación'), findsOneWidget);
   });
 
   testWidgets('el Drawer abre Progreso y Asistente', (tester) async {

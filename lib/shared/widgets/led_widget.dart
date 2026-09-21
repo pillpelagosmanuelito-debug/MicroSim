@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../theme/app_theme.dart';
 
-/// LED simulado: circulo que se ilumina segun [encendido], con brillo
+/// LED simulado: círculo que se ilumina según [encendido], con brillo
 /// proporcional a [brillo] (0-255) cuando se usa para representar PWM.
 class LedWidget extends StatelessWidget {
   const LedWidget({

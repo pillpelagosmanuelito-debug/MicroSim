@@ -4,11 +4,11 @@ import 'package:google_fonts/google_fonts.dart';
 /// Tema visual de MicroSim: paleta "placa de desarrollo" (azul placa
 /// oscuro + cian de pista de cobre + rojo/verde de LED indicador),
 /// deliberadamente distinta a la paleta "panel de instrumento" de
-/// OscilloLab y al verde esquematico de CircuitAR.
+/// OscilloLab y al verde esquemático de CircuitAR.
 ///
-/// La navegacion tambien es distinta: MicroSim usa un Drawer lateral
-/// con los 5 modulos (como CircuitLab Academy) PERO con una portada de
-/// "placa" ilustrada, y un editor de codigo de pantalla completa propio
+/// La navegación también es distinta: MicroSim usa un Drawer lateral
+/// con los 5 módulos (como CircuitLab Academy) PERO con una portada de
+/// "placa" ilustrada, y un editor de código de pantalla completa propio
 /// (sin equivalente en las apps anteriores), en vez de la barra inferior
 /// de 3 destinos que usa OscilloLab.
 class AppTheme {
@@ -58,7 +58,7 @@ class AppTheme {
     );
   }
 
-  /// Fuente monoespaciada para el editor de codigo y el monitor serial.
+  /// Fuente monoespaciada para el editor de código y el monitor serial.
   static TextStyle get textoCodigo =>
       GoogleFonts.jetBrainsMono(fontSize: 14, height: 1.5);
 }

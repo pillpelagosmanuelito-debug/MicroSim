@@ -3,9 +3,9 @@ import 'mcu_exceptions.dart';
 import 'mcu_state.dart';
 import 'parser.dart';
 
-/// Resultado de compilar + ejecutar un sketch del estudiante: exito con
+/// Resultado de compilar + ejecutar un sketch del estudiante: éxito con
 /// el estado final del MCU, o un mensaje de error listo para mostrar
-/// (lexico, sintactico, de ejecucion, o limite de pasos excedido).
+/// (léxico, sintáctico, de ejecución, o límite de pasos excedido).
 class ResultadoEjecucion {
   const ResultadoEjecucion.exito(this.state)
       : mensajeError = null,
@@ -22,7 +22,7 @@ class ResultadoEjecucion {
 /// Compila (lexer+parser) y ejecuta `setup()` una vez y `loop()`
 /// [iteraciones] veces sobre un [MCUState] ya preparado con las entradas
 /// del escenario (botones/sensores simulados). Centraliza el manejo de
-/// errores para que todos los modulos (2-5) lo reutilicen igual.
+/// errores para que todos los módulos (2-5) lo reutilicen igual.
 ResultadoEjecucion ejecutarPrograma(
   String codigo,
   MCUState state, {

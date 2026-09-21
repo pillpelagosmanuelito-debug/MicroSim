@@ -8,11 +8,11 @@ import '../../../shared/widgets/tarjeta_explicacion_widget.dart';
 import '../../editor/widgets/consola_widget.dart';
 import '../../editor/widgets/editor_codigo_widget.dart';
 
-/// Asistente tecnico "explicar codigo" como pantalla independiente:
-/// el estudiante puede pegar cualquier sketch (de cualquier modulo, o
-/// uno propio) y pedir una explicacion linea a linea, sin necesidad de
-/// tener un escenario de simulacion armado. Es la misma logica
-/// (CodeExplainer) que usan los modulos 2-5 tras ejecutar; aqui se
+/// Asistente técnico "explicar código" como pantalla independiente:
+/// el estudiante puede pegar cualquier sketch (de cualquier módulo, o
+/// uno propio) y pedir una explicación línea a línea, sin necesidad de
+/// tener un escenario de simulación armado. Es la misma lógica
+/// (CodeExplainer) que usan los módulos 2-5 tras ejecutar; aquí se
 /// ofrece de forma directa.
 class AsistenteScreen extends StatefulWidget {
   const AsistenteScreen({super.key});
@@ -57,22 +57,22 @@ class _AsistenteScreenState extends State<AsistenteScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Asistente · Explicar codigo')),
+      appBar: AppBar(title: const Text('Asistente · Explicar código')),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
           const Text(
-            'Pega o escribe un sketch y el asistente explica, linea a '
-            'linea, que hace cada instruccion. Es un sistema de reglas '
-            'sobre la estructura del codigo, no un modelo de lenguaje: '
-            'nunca inventa una funcion que no exista en tu programa.',
+            'Pega o escribe un sketch y el asistente explica, línea a '
+            'línea, qué hace cada instrucción. Es un sistema de reglas '
+            'sobre la estructura del código, no un modelo de lenguaje: '
+            'nunca inventa una función que no exista en tu programa.',
           ),
           const SizedBox(height: 12),
           EditorCodigoWidget(controlador: _controlador, alturaMinima: 260),
           const SizedBox(height: 12),
           ElevatedButton.icon(
             icon: const Icon(Icons.auto_awesome),
-            label: const Text('Explicar codigo'),
+            label: const Text('Explicar código'),
             onPressed: _explicar,
           ),
           const SizedBox(height: 12),

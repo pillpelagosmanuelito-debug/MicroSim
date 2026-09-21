@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../../theme/app_theme.dart';
 
-/// Editor de codigo de texto plano (sin resaltado de sintaxis: fuera de
+/// Editor de código de texto plano (sin resaltado de sintaxis: fuera de
 /// alcance del MVP) para escribir sketches del subconjunto de Arduino
-/// basico que interpreta MicroSim.
+/// básico que interpreta MicroSim.
 class EditorCodigoWidget extends StatelessWidget {
   const EditorCodigoWidget({
     super.key,

@@ -61,7 +61,7 @@ class ComunicacionNotifier extends Notifier<ComunicacionState> {
     mcu.entradaAnalogica[1] = state.valorSensor;
 
     // 5 vueltas de loop() para que el "monitor serial" muestre varias
-    // lineas, como en un Arduino real leyendo un sensor periodicamente.
+    // líneas, como en un Arduino real leyendo un sensor periódicamente.
     final ResultadoEjecucion resultado = ejecutarPrograma(
       state.codigo,
       mcu,

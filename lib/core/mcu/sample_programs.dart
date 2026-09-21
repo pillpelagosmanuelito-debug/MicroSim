@@ -1,5 +1,5 @@
-/// Sketches de ejemplo (subconjunto "Arduino basico" de MicroSim) que
-/// sirven como codigo inicial en cada modulo. El estudiante puede
+/// Sketches de ejemplo (subconjunto "Arduino básico" de MicroSim) que
+/// sirven como código inicial en cada módulo. El estudiante puede
 /// editarlos libremente.
 class SamplePrograms {
   static const String parpadeoLed = '''

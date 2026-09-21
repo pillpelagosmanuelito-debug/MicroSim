@@ -38,13 +38,13 @@ class _EntradasScreenState extends ConsumerState<EntradasScreen> {
     final EntradasNotifier notifier = ref.read(entradasProvider.notifier);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Modulo 2 · Entradas digitales')),
+      appBar: AppBar(title: const Text('Módulo 2 · Entradas digitales')),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
           const Text(
-            'Boton virtual conectado al pin 7. Escribe (o edita) el sketch '
-            'que enciende el LED del pin 13 cuando el boton esta presionado.',
+            'Botón virtual conectado al pin 7. Escribe (o edita) el sketch '
+            'que enciende el LED del pin 13 cuando el botón está presionado.',
           ),
           const SizedBox(height: 12),
           EditorCodigoWidget(controlador: _controlador),
@@ -62,7 +62,7 @@ class _EntradasScreenState extends ConsumerState<EntradasScreen> {
                 children: [
                   Column(
                     children: [
-                      const Text('Boton (pin 7)'),
+                      const Text('Botón (pin 7)'),
                       const SizedBox(height: 8),
                       GestureDetector(
                         onTapDown: (_) => notifier.alternarBoton(true),

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../theme/app_theme.dart';
 
-/// Tarjeta reutilizable para mostrar la explicacion del asistente
-/// tecnico (CodeExplainer) sobre el sketch actual del estudiante.
+/// Tarjeta reutilizable para mostrar la explicación del asistente
+/// técnico (CodeExplainer) sobre el sketch actual del estudiante.
 class TarjetaExplicacionWidget extends StatelessWidget {
   const TarjetaExplicacionWidget({
     super.key,
@@ -29,7 +29,7 @@ class TarjetaExplicacionWidget extends StatelessWidget {
                 const Icon(Icons.memory, color: AppTheme.cianCobre),
                 const SizedBox(width: 8),
                 Text(
-                  'Asistente: explicacion del codigo',
+                  'Asistente: explicación del código',
                   style: Theme.of(context).textTheme.titleSmall,
                 ),
               ],

@@ -13,6 +13,7 @@ class MicroSimApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.tema,
       home: const HomeShell(),
+      builder: (context, child) => SafeArea(child: child!),
     );
   }
 }

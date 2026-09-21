@@ -45,7 +45,7 @@ class Token {
 const List<String> _simbolosDobles = ['==', '!=', '<=', '>=', '&&', '||'];
 const String _simbolosSimples = '(){};,.=<>!+-*/%';
 
-/// Convierte el codigo fuente del estudiante en una lista de tokens.
+/// Convierte el código fuente del estudiante en una lista de tokens.
 List<Token> tokenizar(String codigo) {
   final List<Token> tokens = [];
   int i = 0;
@@ -66,7 +66,7 @@ List<Token> tokenizar(String codigo) {
       continue;
     }
 
-    // Comentarios de linea
+    // Comentarios de línea
     if (c == '/' && i + 1 < n && codigo[i + 1] == '/') {
       while (i < n && codigo[i] != '\n') {
         i++;
@@ -74,7 +74,7 @@ List<Token> tokenizar(String codigo) {
       continue;
     }
 
-    // Numeros
+    // Números
     if (esDigito(c)) {
       final int inicio = i;
       while (i < n && esDigito(codigo[i])) {
@@ -108,7 +108,7 @@ List<Token> tokenizar(String codigo) {
       continue;
     }
 
-    // Simbolos compuestos (2 caracteres)
+    // Símbolos compuestos (2 caracteres)
     if (i + 1 < n) {
       final String dos = codigo.substring(i, i + 2);
       if (_simbolosDobles.contains(dos)) {
@@ -118,14 +118,14 @@ List<Token> tokenizar(String codigo) {
       }
     }
 
-    // Simbolos simples
+    // Símbolos simples
     if (_simbolosSimples.contains(c)) {
       tokens.add(Token(tipo: TipoToken.simbolo, valor: c, posicion: i));
       i++;
       continue;
     }
 
-    throw ErrorLexico('Caracter inesperado "$c" en la posicion $i.');
+    throw ErrorLexico('Carácter inesperado "$c" en la posición $i.');
   }
 
   tokens.add(Token(tipo: TipoToken.fin, valor: '', posicion: n));

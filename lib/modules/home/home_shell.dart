@@ -5,11 +5,11 @@ import '../asistente/view/asistente_screen.dart';
 import 'inicio_screen.dart';
 import 'progreso_screen.dart';
 
-/// Cascaron de navegacion de MicroSim: Drawer lateral con Inicio,
+/// Cascarón de navegación de MicroSim: Drawer lateral con Inicio,
 /// Progreso y Asistente. A diferencia de OscilloLab (barra inferior de
-/// 3 destinos), aqui se usa un Drawer con encabezado ilustrado de
+/// 3 destinos), aquí se usa un Drawer con encabezado ilustrado de
 /// "placa de desarrollo", y el contenido de Inicio es una grilla de
-/// modulos en vez de una lista vertical.
+/// módulos en vez de una lista vertical.
 class HomeShell extends StatelessWidget {
   const HomeShell({super.key});
 
@@ -61,7 +61,7 @@ class HomeShell extends StatelessWidget {
             ),
             ListTile(
               leading: const Icon(Icons.auto_awesome_outlined),
-              title: const Text('Asistente: explicar codigo'),
+              title: const Text('Asistente: explicar código'),
               onTap: () {
                 Navigator.of(context).pop();
                 Navigator.of(context).push(

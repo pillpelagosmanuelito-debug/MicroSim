@@ -121,7 +121,7 @@ void loop() {
           maxPasos: 5000,
         );
         expect(r.exitoso, isFalse);
-        expect(r.mensajeError, contains('limite'));
+        expect(r.mensajeError, contains('límite'));
       },
     );
 
@@ -135,7 +135,7 @@ void loop() {}
       final MCUState mcu = MCUState();
       final ResultadoEjecucion r = ejecutarPrograma(codigo, mcu);
       expect(r.exitoso, isFalse);
-      expect(r.mensajeError, contains('Pin digital invalido'));
+      expect(r.mensajeError, contains('Pin digital inválido'));
     });
 
     test(
