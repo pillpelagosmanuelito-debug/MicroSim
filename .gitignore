@@ -1,0 +1,28 @@
+# Flutter / Dart
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+build/
+*.iml
+*.ipr
+*.iws
+
+# Carpetas nativas generadas por `flutter create .` en CI
+/android/
+/ios/
+/macos/
+/windows/
+/linux/
+/web/
+
+# Editor / OS
+.idea/
+.vscode/
+.DS_Store
+
+# Coverage
+coverage/
+
+# Calibracion (scripts Python auxiliares, no forman parte de la app)
+calib/__pycache__/

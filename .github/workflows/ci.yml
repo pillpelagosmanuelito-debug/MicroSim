@@ -1,0 +1,81 @@
+name: MicroSim CI/CD
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  analyze_and_test:
+    name: Analisis estatico y pruebas unitarias
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Canal 'stable' SIN version fija: el codigo se escribio contra el
+      # Flutter estable mas reciente (Color.withValues, CardThemeData).
+      # Fijar una version antigua aqui rompio la compilacion de un
+      # proyecto anterior de esta fabrica (CircuitLab Academy) por
+      # desajuste de APIs; ver docs/03_Arquitectura_Tecnica.md.
+      - name: Configurar Flutter (stable)
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+
+      - name: Generar carpetas nativas (android/ios)
+        run: flutter create --platforms=android,ios --org com.microsim.app --project-name microsim .
+
+      - name: Obtener dependencias
+        run: flutter pub get
+
+      - name: Analizar codigo (flutter analyze)
+        run: flutter analyze --no-fatal-infos
+
+      - name: Verificar formato (dart format)
+        run: dart format --output=none --set-exit-if-changed lib test
+
+      - name: Ejecutar pruebas unitarias y de widgets
+        run: flutter test --coverage
+
+      - name: Subir reporte de cobertura
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage/lcov.info
+
+  build_apk:
+    name: Construir APK de release
+    needs: analyze_and_test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar Java (requerido por Gradle/Android)
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "17"
+
+      - name: Configurar Flutter (stable)
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+
+      - name: Generar carpetas nativas (android/ios)
+        run: flutter create --platforms=android,ios --org com.microsim.app --project-name microsim .
+
+      - name: Obtener dependencias
+        run: flutter pub get
+
+      - name: Generar iconos de la app
+        run: dart run flutter_launcher_icons
+
+      - name: Construir APK de release
+        run: flutter build apk --release
+
+      - name: Publicar APK como artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: microsim-release.apk
+          path: build/app/outputs/flutter-apk/app-release.apk
