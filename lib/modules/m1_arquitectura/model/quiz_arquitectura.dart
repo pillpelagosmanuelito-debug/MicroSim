@@ -37,7 +37,11 @@ const List<PreguntaArquitectura> preguntasArquitectura = [
   ),
   PreguntaArquitectura(
     enunciado: '¿Que le pasa a una variable declarada con int dentro de loop() al reiniciar la placa?',
-    opciones: ['Se pierde: vivia en SRAM', 'Se conserva: vivia en Flash', 'Se guarda automaticamente en EEPROM'],
+    opciones: [
+      'Se pierde: vivia en SRAM',
+      'Se conserva: vivia en Flash',
+      'Se guarda automaticamente en EEPROM',
+    ],
     indiceCorrecto: 0,
     explicacion: 'Las variables en tiempo de ejecucion viven en SRAM, que se borra al reiniciar. Para persistir datos entre reinicios se necesita EEPROM explicitamente.',
   ),

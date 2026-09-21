@@ -8,10 +8,12 @@ class QuizArquitecturaScreen extends ConsumerStatefulWidget {
   const QuizArquitecturaScreen({super.key});
 
   @override
-  ConsumerState<QuizArquitecturaScreen> createState() => _QuizArquitecturaScreenState();
+  ConsumerState<QuizArquitecturaScreen> createState() =>
+      _QuizArquitecturaScreenState();
 }
 
-class _QuizArquitecturaScreenState extends ConsumerState<QuizArquitecturaScreen> {
+class _QuizArquitecturaScreenState
+    extends ConsumerState<QuizArquitecturaScreen> {
   int _indice = 0;
   int _correctas = 0;
   int? _opcionElegida;
@@ -48,13 +50,17 @@ class _QuizArquitecturaScreenState extends ConsumerState<QuizArquitecturaScreen>
               children: [
                 const Icon(Icons.emoji_events_outlined, size: 64),
                 const SizedBox(height: 16),
-                Text('$_correctas / ${preguntasArquitectura.length} correctas',
-                    style: Theme.of(context).textTheme.headlineSmall),
+                Text(
+                  '$_correctas / ${preguntasArquitectura.length} correctas',
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
                 const SizedBox(height: 24),
                 ElevatedButton(
                   onPressed: () {
                     if (_correctas >= (preguntasArquitectura.length * 0.6)) {
-                      ref.read(progresoProvider.notifier).registrarEjercicioCompletado('m1');
+                      ref
+                          .read(progresoProvider.notifier)
+                          .registrarEjercicioCompletado('m1');
                     }
                     Navigator.of(context).pop();
                   },
@@ -70,13 +76,18 @@ class _QuizArquitecturaScreenState extends ConsumerState<QuizArquitecturaScreen>
     final PreguntaArquitectura pregunta = preguntasArquitectura[_indice];
 
     return Scaffold(
-      appBar: AppBar(title: Text('Pregunta ${_indice + 1}/${preguntasArquitectura.length}')),
+      appBar: AppBar(
+        title: Text('Pregunta ${_indice + 1}/${preguntasArquitectura.length}'),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(pregunta.enunciado, style: Theme.of(context).textTheme.titleMedium),
+            Text(
+              pregunta.enunciado,
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
             const SizedBox(height: 16),
             ...List.generate(pregunta.opciones.length, (i) {
               Color? color;
@@ -104,11 +115,17 @@ class _QuizArquitecturaScreenState extends ConsumerState<QuizArquitecturaScreen>
               );
             }),
             if (_opcionElegida != null) ...[
-              Text(pregunta.explicacion, style: Theme.of(context).textTheme.bodySmall),
+              Text(
+                pregunta.explicacion,
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
               const Spacer(),
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(onPressed: _siguiente, child: const Text('Siguiente')),
+                child: ElevatedButton(
+                  onPressed: _siguiente,
+                  child: const Text('Siguiente'),
+                ),
               ),
             ],
           ],

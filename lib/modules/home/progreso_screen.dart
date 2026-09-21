@@ -28,7 +28,10 @@ class ProgresoScreen extends ConsumerWidget {
               padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
-                  Text('${estado.total()}', style: Theme.of(context).textTheme.displaySmall),
+                  Text(
+                    '${estado.total()}',
+                    style: Theme.of(context).textTheme.displaySmall,
+                  ),
                   const Text('ejercicios completados en total'),
                 ],
               ),
@@ -41,7 +44,9 @@ class ProgresoScreen extends ConsumerWidget {
               child: ListTile(
                 leading: CircleAvatar(child: Text(completados.toString())),
                 title: Text(entry.value),
-                subtitle: LinearProgressIndicator(value: (completados / 5).clamp(0, 1).toDouble()),
+                subtitle: LinearProgressIndicator(
+                  value: (completados / 5).clamp(0, 1).toDouble(),
+                ),
               ),
             );
           }),

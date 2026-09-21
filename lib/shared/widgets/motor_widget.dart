@@ -6,7 +6,11 @@ import '../../theme/app_theme.dart';
 /// PWM: barra de "velocidad/brillo" de 0 a 255, con el icono girando
 /// simbolicamente cuando hay senal.
 class MotorWidget extends StatelessWidget {
-  const MotorWidget({super.key, required this.valorPwm, this.etiqueta = 'Motor (PWM)'});
+  const MotorWidget({
+    super.key,
+    required this.valorPwm,
+    this.etiqueta = 'Motor (PWM)',
+  });
 
   final int valorPwm; // 0-255
   final String etiqueta;
@@ -19,7 +23,10 @@ class MotorWidget extends StatelessWidget {
       children: [
         Row(
           children: [
-            Icon(Icons.settings, color: valorPwm > 0 ? AppTheme.ambarPwm : Colors.white24),
+            Icon(
+              Icons.settings,
+              color: valorPwm > 0 ? AppTheme.ambarPwm : Colors.white24,
+            ),
             const SizedBox(width: 8),
             Text(etiqueta),
             const Spacer(),

@@ -27,11 +27,31 @@ class InicioScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final ProgresoState progreso = ref.watch(progresoProvider);
     final List<_ModuloInfo> modulos = [
-      const _ModuloInfo('m1', 'Arquitectura\nMCU', Icons.memory, ArquitecturaScreen()),
-      const _ModuloInfo('m2', 'Entradas\ndigitales', Icons.touch_app, EntradasScreen()),
-      const _ModuloInfo('m3', 'Salidas\ndigitales', Icons.lightbulb_outline, SalidasScreen()),
+      const _ModuloInfo(
+        'm1',
+        'Arquitectura\nMCU',
+        Icons.memory,
+        ArquitecturaScreen(),
+      ),
+      const _ModuloInfo(
+        'm2',
+        'Entradas\ndigitales',
+        Icons.touch_app,
+        EntradasScreen(),
+      ),
+      const _ModuloInfo(
+        'm3',
+        'Salidas\ndigitales',
+        Icons.lightbulb_outline,
+        SalidasScreen(),
+      ),
       const _ModuloInfo('m4', 'Sensores', Icons.sensors, SensoresScreen()),
-      const _ModuloInfo('m5', 'Comunicacion', Icons.cable, ComunicacionScreen()),
+      const _ModuloInfo(
+        'm5',
+        'Comunicacion',
+        Icons.cable,
+        ComunicacionScreen(),
+      ),
     ];
 
     return ListView(
@@ -46,7 +66,9 @@ class InicioScreen extends ConsumerWidget {
               end: Alignment.bottomRight,
             ),
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: AppTheme.cianCobre.withValues(alpha: 0.25)),
+            border: Border.all(
+              color: AppTheme.cianCobre.withValues(alpha: 0.25),
+            ),
           ),
           child: Row(
             children: [
@@ -74,9 +96,9 @@ class InicioScreen extends ConsumerWidget {
             return Card(
               child: InkWell(
                 borderRadius: BorderRadius.circular(14),
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(builder: (_) => m.pantalla),
-                ),
+                onTap: () =>
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (_) => m.pantalla)),
                 child: Padding(
                   padding: const EdgeInsets.all(14),
                   child: Column(
@@ -87,7 +109,10 @@ class InicioScreen extends ConsumerWidget {
                       Text(m.titulo, textAlign: TextAlign.center),
                       if (completados > 0) ...[
                         const SizedBox(height: 6),
-                        Chip(label: Text('$completados ✓'), visualDensity: VisualDensity.compact),
+                        Chip(
+                          label: Text('$completados ✓'),
+                          visualDensity: VisualDensity.compact,
+                        ),
                       ],
                     ],
                   ),

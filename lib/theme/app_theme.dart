@@ -49,7 +49,9 @@ class AppTheme {
         style: ElevatedButton.styleFrom(
           backgroundColor: cianCobre,
           foregroundColor: placaOscura,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
         ),
       ),
@@ -57,5 +59,6 @@ class AppTheme {
   }
 
   /// Fuente monoespaciada para el editor de codigo y el monitor serial.
-  static TextStyle get textoCodigo => GoogleFonts.jetBrainsMono(fontSize: 14, height: 1.5);
+  static TextStyle get textoCodigo =>
+      GoogleFonts.jetBrainsMono(fontSize: 14, height: 1.5);
 }

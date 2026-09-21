@@ -27,10 +27,20 @@ class HomeShell extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Icon(Icons.developer_board, size: 40, color: AppTheme.cianCobre),
+                  Icon(
+                    Icons.developer_board,
+                    size: 40,
+                    color: AppTheme.cianCobre,
+                  ),
                   const SizedBox(height: 8),
-                  Text('MicroSim', style: Theme.of(context).textTheme.titleLarge),
-                  const Text('Simulador de microcontroladores', style: TextStyle(fontSize: 12)),
+                  Text(
+                    'MicroSim',
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  const Text(
+                    'Simulador de microcontroladores',
+                    style: TextStyle(fontSize: 12),
+                  ),
                 ],
               ),
             ),

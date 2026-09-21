@@ -21,7 +21,9 @@ class _SensoresScreenState extends ConsumerState<SensoresScreen> {
   @override
   void initState() {
     super.initState();
-    _controlador = TextEditingController(text: ref.read(sensoresProvider).codigo);
+    _controlador = TextEditingController(
+      text: ref.read(sensoresProvider).codigo,
+    );
   }
 
   @override
@@ -57,8 +59,10 @@ class _SensoresScreenState extends ConsumerState<SensoresScreen> {
               padding: const EdgeInsets.all(16),
               child: Column(
                 children: [
-                  Text('Sensor (A0): ${estado.valorSensor}  ·  '
-                      '${estado.voltajeEquivalente.toStringAsFixed(2)} V equivalentes'),
+                  Text(
+                    'Sensor (A0): ${estado.valorSensor}  ·  '
+                    '${estado.voltajeEquivalente.toStringAsFixed(2)} V equivalentes',
+                  ),
                   Slider(
                     value: estado.valorSensor.toDouble(),
                     min: 0,
@@ -68,7 +72,10 @@ class _SensoresScreenState extends ConsumerState<SensoresScreen> {
                     onChanged: (v) => notifier.actualizarSensor(v.round()),
                   ),
                   const SizedBox(height: 8),
-                  LedWidget(encendido: estado.led13Encendido, etiqueta: 'LED (pin 13)'),
+                  LedWidget(
+                    encendido: estado.led13Encendido,
+                    etiqueta: 'LED (pin 13)',
+                  ),
                 ],
               ),
             ),
@@ -85,11 +92,16 @@ class _SensoresScreenState extends ConsumerState<SensoresScreen> {
           else if (estado.state != null)
             ConsolaWidget(lineas: estado.state!.serial),
           const SizedBox(height: 12),
-          TarjetaExplicacionWidget(lineas: estado.explicacion, advertencias: estado.advertencias),
+          TarjetaExplicacionWidget(
+            lineas: estado.explicacion,
+            advertencias: estado.advertencias,
+          ),
           if (estado.state != null && estado.mensajeError == null) ...[
             const SizedBox(height: 12),
             OutlinedButton(
-              onPressed: () => ref.read(progresoProvider.notifier).registrarEjercicioCompletado('m4'),
+              onPressed: () => ref
+                  .read(progresoProvider.notifier)
+                  .registrarEjercicioCompletado('m4'),
               child: const Text('Marcar ejercicio como completado'),
             ),
           ],

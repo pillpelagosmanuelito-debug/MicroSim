@@ -7,10 +7,12 @@ import 'parser.dart';
 /// el estado final del MCU, o un mensaje de error listo para mostrar
 /// (lexico, sintactico, de ejecucion, o limite de pasos excedido).
 class ResultadoEjecucion {
-  const ResultadoEjecucion.exito(this.state) : mensajeError = null, exitoso = true;
+  const ResultadoEjecucion.exito(this.state)
+    : mensajeError = null,
+      exitoso = true;
   const ResultadoEjecucion.error(this.mensajeError)
-      : state = null,
-        exitoso = false;
+    : state = null,
+      exitoso = false;
 
   final MCUState? state;
   final String? mensajeError;

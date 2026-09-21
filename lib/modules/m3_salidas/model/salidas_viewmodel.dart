@@ -28,7 +28,10 @@ class SalidasState {
     final List<MuestraHistorial> h = state?.historial ?? const [];
     return h
         .take(12)
-        .map((m) => 't=${m.milis}ms  →  pin13=${m.digital[13] == 1 ? "HIGH" : "LOW"}')
+        .map(
+          (m) =>
+              't=${m.milis}ms  →  pin13=${m.digital[13] == 1 ? "HIGH" : "LOW"}',
+        )
         .toList();
   }
 
@@ -55,7 +58,11 @@ class SalidasNotifier extends Notifier<SalidasState> {
 
   void ejecutar() {
     final MCUState mcu = MCUState();
-    final ResultadoEjecucion resultado = ejecutarPrograma(state.codigo, mcu, iteraciones: 6);
+    final ResultadoEjecucion resultado = ejecutarPrograma(
+      state.codigo,
+      mcu,
+      iteraciones: 6,
+    );
 
     List<String> explicacion = const [];
     List<String> advertencias = const [];

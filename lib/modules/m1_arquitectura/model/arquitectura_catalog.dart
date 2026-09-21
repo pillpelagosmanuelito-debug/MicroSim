@@ -19,7 +19,8 @@ const List<FichaArquitectura> catalogoArquitectura = [
   FichaArquitectura(
     id: 'cpu',
     titulo: 'CPU (unidad central de procesamiento)',
-    explicacion: 'Ejecuta las instrucciones del programa una por una: lee '
+    explicacion:
+        'Ejecuta las instrucciones del programa una por una: lee '
         'la instruccion, la decodifica y la ejecuta, a una velocidad '
         'determinada por el reloj del microcontrolador. En Arduino Uno es '
         'un nucleo AVR de 8 bits.',
@@ -32,7 +33,8 @@ const List<FichaArquitectura> catalogoArquitectura = [
   FichaArquitectura(
     id: 'memoria',
     titulo: 'Memoria: Flash, SRAM y EEPROM',
-    explicacion: 'Un microcontrolador tiene tres tipos de memoria con '
+    explicacion:
+        'Un microcontrolador tiene tres tipos de memoria con '
         'propositos distintos. La Flash guarda el programa (persiste sin '
         'energia). La SRAM guarda las variables mientras el programa '
         'corre (se borra al apagar). La EEPROM guarda datos que deben '
@@ -46,7 +48,8 @@ const List<FichaArquitectura> catalogoArquitectura = [
   FichaArquitectura(
     id: 'pines_digitales',
     titulo: 'Pines digitales (0-13)',
-    explicacion: 'Cada pin digital puede configurarse como entrada '
+    explicacion:
+        'Cada pin digital puede configurarse como entrada '
         '(INPUT) o salida (OUTPUT) con pinMode(). Como salida, solo puede '
         'estar en dos estados: HIGH (5V) o LOW (0V) — no hay valores '
         'intermedios sin PWM.',
@@ -59,7 +62,8 @@ const List<FichaArquitectura> catalogoArquitectura = [
   FichaArquitectura(
     id: 'pines_analogicos',
     titulo: 'Pines analogicos (A0-A5)',
-    explicacion: 'Un conversor analogico-digital (ADC) interno traduce '
+    explicacion:
+        'Un conversor analogico-digital (ADC) interno traduce '
         'un voltaje continuo (0-5V) a un numero entero de 10 bits '
         '(0-1023) que el programa puede leer con analogRead().',
     datosClave: [
@@ -71,7 +75,8 @@ const List<FichaArquitectura> catalogoArquitectura = [
   FichaArquitectura(
     id: 'alimentacion',
     titulo: 'Alimentacion',
-    explicacion: 'La placa puede alimentarse por el puerto USB (5V) o por '
+    explicacion:
+        'La placa puede alimentarse por el puerto USB (5V) o por '
         'un conector de alimentacion externo (7-12V recomendado), que un '
         'regulador interno reduce a los 5V que usa el microcontrolador.',
     datosClave: [

@@ -22,7 +22,9 @@ class _SalidasScreenState extends ConsumerState<SalidasScreen> {
   @override
   void initState() {
     super.initState();
-    _controlador = TextEditingController(text: ref.read(salidasProvider).codigo);
+    _controlador = TextEditingController(
+      text: ref.read(salidasProvider).codigo,
+    );
   }
 
   @override
@@ -58,9 +60,15 @@ class _SalidasScreenState extends ConsumerState<SalidasScreen> {
               padding: const EdgeInsets.all(16),
               child: Column(
                 children: [
-                  LedWidget(encendido: estado.led13Encendido, etiqueta: 'LED (pin 13)'),
+                  LedWidget(
+                    encendido: estado.led13Encendido,
+                    etiqueta: 'LED (pin 13)',
+                  ),
                   const SizedBox(height: 16),
-                  MotorWidget(valorPwm: estado.pwmPin9, etiqueta: 'Motor / LED PWM (pin 9)'),
+                  MotorWidget(
+                    valorPwm: estado.pwmPin9,
+                    etiqueta: 'Motor / LED PWM (pin 9)',
+                  ),
                 ],
               ),
             ),
@@ -76,16 +84,24 @@ class _SalidasScreenState extends ConsumerState<SalidasScreen> {
             ConsolaWidget(lineas: [estado.mensajeError!], esError: true),
           if (estado.state != null && estado.lineaDeTiempo.isNotEmpty) ...[
             const SizedBox(height: 12),
-            Text('Linea de tiempo (pin 13)', style: Theme.of(context).textTheme.titleSmall),
+            Text(
+              'Linea de tiempo (pin 13)',
+              style: Theme.of(context).textTheme.titleSmall,
+            ),
             const SizedBox(height: 6),
             ConsolaWidget(lineas: estado.lineaDeTiempo),
           ],
           const SizedBox(height: 12),
-          TarjetaExplicacionWidget(lineas: estado.explicacion, advertencias: estado.advertencias),
+          TarjetaExplicacionWidget(
+            lineas: estado.explicacion,
+            advertencias: estado.advertencias,
+          ),
           if (estado.state != null && estado.mensajeError == null) ...[
             const SizedBox(height: 12),
             OutlinedButton(
-              onPressed: () => ref.read(progresoProvider.notifier).registrarEjercicioCompletado('m3'),
+              onPressed: () => ref
+                  .read(progresoProvider.notifier)
+                  .registrarEjercicioCompletado('m3'),
               child: const Text('Marcar ejercicio como completado'),
             ),
           ],

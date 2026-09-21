@@ -29,7 +29,11 @@ const Map<String, TipoToken> _palabrasClave = {
 };
 
 class Token {
-  const Token({required this.tipo, required this.valor, required this.posicion});
+  const Token({
+    required this.tipo,
+    required this.valor,
+    required this.posicion,
+  });
   final TipoToken tipo;
   final String valor;
   final int posicion;
@@ -76,7 +80,13 @@ List<Token> tokenizar(String codigo) {
       while (i < n && esDigito(codigo[i])) {
         i++;
       }
-      tokens.add(Token(tipo: TipoToken.numero, valor: codigo.substring(inicio, i), posicion: inicio));
+      tokens.add(
+        Token(
+          tipo: TipoToken.numero,
+          valor: codigo.substring(inicio, i),
+          posicion: inicio,
+        ),
+      );
       continue;
     }
 
@@ -88,7 +98,13 @@ List<Token> tokenizar(String codigo) {
       }
       final String texto = codigo.substring(inicio, i);
       final TipoToken? clave = _palabrasClave[texto];
-      tokens.add(Token(tipo: clave ?? TipoToken.identificador, valor: texto, posicion: inicio));
+      tokens.add(
+        Token(
+          tipo: clave ?? TipoToken.identificador,
+          valor: texto,
+          posicion: inicio,
+        ),
+      );
       continue;
     }
 

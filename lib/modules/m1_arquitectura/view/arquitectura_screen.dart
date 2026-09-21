@@ -26,7 +26,9 @@ class ArquitecturaScreen extends StatelessWidget {
                 title: Text(ficha.titulo),
                 trailing: const Icon(Icons.chevron_right),
                 onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(builder: (_) => FichaDetalleScreen(ficha: ficha)),
+                  MaterialPageRoute(
+                    builder: (_) => FichaDetalleScreen(ficha: ficha),
+                  ),
                 ),
               ),
             ),

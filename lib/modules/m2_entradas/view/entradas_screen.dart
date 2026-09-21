@@ -21,7 +21,9 @@ class _EntradasScreenState extends ConsumerState<EntradasScreen> {
   @override
   void initState() {
     super.initState();
-    _controlador = TextEditingController(text: ref.read(entradasProvider).codigo);
+    _controlador = TextEditingController(
+      text: ref.read(entradasProvider).codigo,
+    );
   }
 
   @override
@@ -70,16 +72,23 @@ class _EntradasScreenState extends ConsumerState<EntradasScreen> {
                           radius: 32,
                           backgroundColor: estado.botonPresionado
                               ? Theme.of(context).colorScheme.primary
-                              : Theme.of(context).colorScheme.surfaceContainerHighest,
+                              : Theme.of(context)
+                                    .colorScheme
+                                    .surfaceContainerHighest,
                           child: const Icon(Icons.touch_app),
                         ),
                       ),
                       const SizedBox(height: 6),
-                      Text(estado.botonPresionado ? 'presionado' : 'suelto',
-                          style: Theme.of(context).textTheme.bodySmall),
+                      Text(
+                        estado.botonPresionado ? 'presionado' : 'suelto',
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
                     ],
                   ),
-                  LedWidget(encendido: estado.ledEncendido, etiqueta: 'LED (pin 13)'),
+                  LedWidget(
+                    encendido: estado.ledEncendido,
+                    etiqueta: 'LED (pin 13)',
+                  ),
                 ],
               ),
             ),
@@ -94,11 +103,16 @@ class _EntradasScreenState extends ConsumerState<EntradasScreen> {
           if (estado.mensajeError != null)
             ConsolaWidget(lineas: [estado.mensajeError!], esError: true),
           const SizedBox(height: 12),
-          TarjetaExplicacionWidget(lineas: estado.explicacion, advertencias: estado.advertencias),
+          TarjetaExplicacionWidget(
+            lineas: estado.explicacion,
+            advertencias: estado.advertencias,
+          ),
           if (estado.state != null && estado.mensajeError == null) ...[
             const SizedBox(height: 12),
             OutlinedButton(
-              onPressed: () => ref.read(progresoProvider.notifier).registrarEjercicioCompletado('m2'),
+              onPressed: () => ref
+                  .read(progresoProvider.notifier)
+                  .registrarEjercicioCompletado('m2'),
               child: const Text('Marcar ejercicio como completado'),
             ),
           ],

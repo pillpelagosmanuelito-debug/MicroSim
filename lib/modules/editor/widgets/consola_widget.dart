@@ -24,15 +24,22 @@ class ConsolaWidget extends StatelessWidget {
         border: Border.all(color: color.withValues(alpha: 0.4)),
       ),
       child: lineas.isEmpty
-          ? Text('Sin salida todavia. Presiona "Ejecutar".',
-              style: AppTheme.textoCodigo.copyWith(color: Colors.white38))
+          ? Text(
+              'Sin salida todavia. Presiona "Ejecutar".',
+              style: AppTheme.textoCodigo.copyWith(color: Colors.white38),
+            )
           : ListView(
               shrinkWrap: true,
               children: lineas
-                  .map((l) => Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 2),
-                        child: Text(l, style: AppTheme.textoCodigo.copyWith(color: color)),
-                      ))
+                  .map(
+                    (l) => Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 2),
+                      child: Text(
+                        l,
+                        style: AppTheme.textoCodigo.copyWith(color: color),
+                      ),
+                    ),
+                  )
                   .toList(),
             ),
     );

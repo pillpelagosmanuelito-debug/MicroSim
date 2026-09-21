@@ -23,7 +23,11 @@ class ComunicacionState {
   final List<String> explicacion;
   final List<String> advertencias;
 
-  ComunicacionState copyWith({String? codigo, int? valorSensor, bool limpiarResultado = false}) {
+  ComunicacionState copyWith({
+    String? codigo,
+    int? valorSensor,
+    bool limpiarResultado = false,
+  }) {
     return ComunicacionState(
       codigo: codigo ?? this.codigo,
       valorSensor: valorSensor ?? this.valorSensor,
@@ -38,7 +42,10 @@ class ComunicacionState {
 class ComunicacionNotifier extends Notifier<ComunicacionState> {
   @override
   ComunicacionState build() {
-    return const ComunicacionState(codigo: SamplePrograms.comunicacionSerial, valorSensor: 620);
+    return const ComunicacionState(
+      codigo: SamplePrograms.comunicacionSerial,
+      valorSensor: 620,
+    );
   }
 
   void actualizarCodigo(String codigo) {
@@ -55,7 +62,11 @@ class ComunicacionNotifier extends Notifier<ComunicacionState> {
 
     // 5 vueltas de loop() para que el "monitor serial" muestre varias
     // lineas, como en un Arduino real leyendo un sensor periodicamente.
-    final ResultadoEjecucion resultado = ejecutarPrograma(state.codigo, mcu, iteraciones: 5);
+    final ResultadoEjecucion resultado = ejecutarPrograma(
+      state.codigo,
+      mcu,
+      iteraciones: 5,
+    );
 
     List<String> explicacion = const [];
     List<String> advertencias = const [];
@@ -76,5 +87,8 @@ class ComunicacionNotifier extends Notifier<ComunicacionState> {
   }
 }
 
-final NotifierProvider<ComunicacionNotifier, ComunicacionState> comunicacionProvider =
-    NotifierProvider<ComunicacionNotifier, ComunicacionState>(ComunicacionNotifier.new);
+final NotifierProvider<ComunicacionNotifier, ComunicacionState>
+comunicacionProvider =
+    NotifierProvider<ComunicacionNotifier, ComunicacionState>(
+      ComunicacionNotifier.new,
+    );

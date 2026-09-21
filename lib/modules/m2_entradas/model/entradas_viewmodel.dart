@@ -38,7 +38,9 @@ class EntradasState {
       codigo: codigo ?? this.codigo,
       botonPresionado: botonPresionado ?? this.botonPresionado,
       state: limpiarResultado ? null : (state ?? this.state),
-      mensajeError: limpiarResultado ? null : (mensajeError ?? this.mensajeError),
+      mensajeError: limpiarResultado
+          ? null
+          : (mensajeError ?? this.mensajeError),
       explicacion: explicacion ?? this.explicacion,
       advertencias: advertencias ?? this.advertencias,
     );
@@ -48,7 +50,10 @@ class EntradasState {
 class EntradasNotifier extends Notifier<EntradasState> {
   @override
   EntradasState build() {
-    return const EntradasState(codigo: SamplePrograms.botonEncienceLed, botonPresionado: false);
+    return const EntradasState(
+      codigo: SamplePrograms.botonEncienceLed,
+      botonPresionado: false,
+    );
   }
 
   void actualizarCodigo(String codigo) {
@@ -63,7 +68,11 @@ class EntradasNotifier extends Notifier<EntradasState> {
     final MCUState mcu = MCUState();
     mcu.digital[7] = state.botonPresionado ? 1 : 0;
 
-    final ResultadoEjecucion resultado = ejecutarPrograma(state.codigo, mcu, iteraciones: 1);
+    final ResultadoEjecucion resultado = ejecutarPrograma(
+      state.codigo,
+      mcu,
+      iteraciones: 1,
+    );
 
     List<String> explicacion = const [];
     List<String> advertencias = const [];

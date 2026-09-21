@@ -6,7 +6,11 @@ import '../../../theme/app_theme.dart';
 /// alcance del MVP) para escribir sketches del subconjunto de Arduino
 /// basico que interpreta MicroSim.
 class EditorCodigoWidget extends StatelessWidget {
-  const EditorCodigoWidget({super.key, required this.controlador, this.alturaMinima = 220});
+  const EditorCodigoWidget({
+    super.key,
+    required this.controlador,
+    this.alturaMinima = 220,
+  });
 
   final TextEditingController controlador;
   final double alturaMinima;

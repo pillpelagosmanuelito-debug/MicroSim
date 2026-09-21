@@ -12,10 +12,10 @@ class MuestraHistorial {
 /// `Serial.println`.
 class MCUState {
   MCUState()
-      : modoPin = {for (int i = 0; i < 14; i++) i: 'INPUT'},
-        digital = {for (int i = 0; i < 14; i++) i: 0},
-        pwm = {for (int i = 0; i < 14; i++) i: 0},
-        entradaAnalogica = {for (int i = 0; i < 6; i++) i: 0};
+    : modoPin = {for (int i = 0; i < 14; i++) i: 'INPUT'},
+      digital = {for (int i = 0; i < 14; i++) i: 0},
+      pwm = {for (int i = 0; i < 14; i++) i: 0},
+      entradaAnalogica = {for (int i = 0; i < 6; i++) i: 0};
 
   final Map<int, String> modoPin;
   final Map<int, int> digital;
@@ -33,7 +33,9 @@ class MCUState {
   static const List<int> pinesConPwm = [3, 5, 6, 9, 10, 11];
 
   void tomarMuestra() {
-    historial.add(MuestraHistorial(milis: milis, digital: Map<int, int>.from(digital)));
+    historial.add(
+      MuestraHistorial(milis: milis, digital: Map<int, int>.from(digital)),
+    );
     // Limite razonable para no crecer sin fin en un loop muy largo.
     if (historial.length > 500) {
       historial.removeAt(0);

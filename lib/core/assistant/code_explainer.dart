@@ -26,8 +26,10 @@ class CodeExplainer {
       lineas.addAll(loop.cuerpo.map((s) => '   ${_explicarSentencia(s)}'));
     }
     if (setup == null && loop == null) {
-      lineas.add('Este sketch no define setup() ni loop(): un programa de '
-          'Arduino necesita ambas funciones para poder ejecutarse.');
+      lineas.add(
+        'Este sketch no define setup() ni loop(): un programa de '
+        'Arduino necesita ambas funciones para poder ejecutarse.',
+      );
     }
     return lineas;
   }
@@ -45,7 +47,9 @@ class CodeExplainer {
       for (final Stmt s in setup.cuerpo) {
         if (s is SentenciaExpr && s.expr is Llamada) {
           final Llamada l = s.expr as Llamada;
-          if (l.nombre == 'pinMode' && l.argumentos.isNotEmpty && l.argumentos[0] is NumeroLiteral) {
+          if (l.nombre == 'pinMode' &&
+              l.argumentos.isNotEmpty &&
+              l.argumentos[0] is NumeroLiteral) {
             pinesConfigurados.add((l.argumentos[0] as NumeroLiteral).valor);
           }
         }
@@ -60,7 +64,11 @@ class CodeExplainer {
     return avisos;
   }
 
-  static void _buscarUsosDePin(Stmt s, Set<int> configurados, List<String> avisos) {
+  static void _buscarUsosDePin(
+    Stmt s,
+    Set<int> configurados,
+    List<String> avisos,
+  ) {
     if (s is SentenciaExpr && s.expr is Llamada) {
       final Llamada l = s.expr as Llamada;
       if ((l.nombre == 'digitalWrite' || l.nombre == 'analogWrite') &&
@@ -68,9 +76,11 @@ class CodeExplainer {
           l.argumentos[0] is NumeroLiteral) {
         final int pin = (l.argumentos[0] as NumeroLiteral).valor;
         if (!configurados.contains(pin)) {
-          avisos.add('El pin $pin se usa en ${l.nombre}() pero no se configuro '
-              'con pinMode($pin, OUTPUT) en setup(). Arduino real puede '
-              'comportarse de forma impredecible en este caso.');
+          avisos.add(
+            'El pin $pin se usa en ${l.nombre}() pero no se configuro '
+            'con pinMode($pin, OUTPUT) en setup(). Arduino real puede '
+            'comportarse de forma impredecible en este caso.',
+          );
         }
       }
     } else if (s is Si) {

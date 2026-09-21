@@ -34,7 +34,8 @@ class Parser {
   }
 
   bool _es(TipoToken tipo, [String? simbolo]) {
-    return _actual.tipo == tipo && (simbolo == null || _actual.valor == simbolo);
+    return _actual.tipo == tipo &&
+        (simbolo == null || _actual.valor == simbolo);
   }
 
   Programa parsePrograma() {
@@ -136,7 +137,12 @@ class Parser {
     final Asignacion actualizacion = Asignacion(nombre: nombre, expr: actExpr);
     _esperar(TipoToken.simbolo, simbolo: ')');
     final List<Stmt> cuerpo = _parseBloque();
-    return Para(init: init, condicion: cond, actualizacion: actualizacion, cuerpo: cuerpo);
+    return Para(
+      init: init,
+      condicion: cond,
+      actualizacion: actualizacion,
+      cuerpo: cuerpo,
+    );
   }
 
   Stmt _parseMientras() {
@@ -202,7 +208,9 @@ class Parser {
 
   Expr _parseFactor() {
     Expr izq = _parseUnario();
-    while (_es(TipoToken.simbolo, '*') || _es(TipoToken.simbolo, '/') || _es(TipoToken.simbolo, '%')) {
+    while (_es(TipoToken.simbolo, '*') ||
+        _es(TipoToken.simbolo, '/') ||
+        _es(TipoToken.simbolo, '%')) {
       final String op = _avanzar().valor;
       izq = OperacionBinaria(operador: op, izq: izq, der: _parseUnario());
     }
@@ -258,7 +266,9 @@ class Parser {
       _esperar(TipoToken.simbolo, simbolo: ')');
       return expr;
     }
-    throw ErrorSintactico('Expresion inesperada: "${t.valor}" en la posicion ${t.posicion}.');
+    throw ErrorSintactico(
+      'Expresion inesperada: "${t.valor}" en la posicion ${t.posicion}.',
+    );
   }
 }
 

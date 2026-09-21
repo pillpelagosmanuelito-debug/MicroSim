@@ -4,7 +4,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:microsim/app.dart';
 
 void main() {
-  testWidgets('MicroSimApp arranca y muestra la portada con los 5 modulos', (tester) async {
+  testWidgets('MicroSimApp arranca y muestra la portada con los 5 modulos', (
+    tester,
+  ) async {
     await tester.pumpWidget(const ProviderScope(child: MicroSimApp()));
     await tester.pumpAndSettle();
 

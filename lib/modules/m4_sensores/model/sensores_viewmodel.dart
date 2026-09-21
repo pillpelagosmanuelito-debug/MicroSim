@@ -26,7 +26,11 @@ class SensoresState {
   bool get led13Encendido => (state?.digital[13] ?? 0) == 1;
   double get voltajeEquivalente => valorSensor * 5.0 / 1023;
 
-  SensoresState copyWith({String? codigo, int? valorSensor, bool limpiarResultado = false}) {
+  SensoresState copyWith({
+    String? codigo,
+    int? valorSensor,
+    bool limpiarResultado = false,
+  }) {
     return SensoresState(
       codigo: codigo ?? this.codigo,
       valorSensor: valorSensor ?? this.valorSensor,
@@ -41,7 +45,10 @@ class SensoresState {
 class SensoresNotifier extends Notifier<SensoresState> {
   @override
   SensoresState build() {
-    return const SensoresState(codigo: SamplePrograms.sensorConUmbral, valorSensor: 512);
+    return const SensoresState(
+      codigo: SamplePrograms.sensorConUmbral,
+      valorSensor: 512,
+    );
   }
 
   void actualizarCodigo(String codigo) {
@@ -56,7 +63,11 @@ class SensoresNotifier extends Notifier<SensoresState> {
     final MCUState mcu = MCUState();
     mcu.entradaAnalogica[0] = state.valorSensor;
 
-    final ResultadoEjecucion resultado = ejecutarPrograma(state.codigo, mcu, iteraciones: 1);
+    final ResultadoEjecucion resultado = ejecutarPrograma(
+      state.codigo,
+      mcu,
+      iteraciones: 1,
+    );
 
     List<String> explicacion = const [];
     List<String> advertencias = const [];

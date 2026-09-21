@@ -7,7 +7,7 @@ import 'mcu_state.dart';
 /// validado en `calib/interpreter_prototype.py`.
 class Interpreter {
   Interpreter(this.programa, this.state, {this.maxPasos = 20000})
-      : globales = Map<String, Object?>.from(_constantes);
+    : globales = Map<String, Object?>.from(_constantes);
 
   final Programa programa;
   final MCUState state;
@@ -54,7 +54,9 @@ class Interpreter {
   void _ejecutarSentencia(Stmt stmt, Map<String, Object?> scope) {
     _tick();
     if (stmt is VarDecl) {
-      scope[stmt.nombre] = stmt.inicial != null ? _evaluar(stmt.inicial!, scope) : 0;
+      scope[stmt.nombre] = stmt.inicial != null
+          ? _evaluar(stmt.inicial!, scope)
+          : 0;
     } else if (stmt is Asignacion) {
       scope[stmt.nombre] = _evaluar(stmt.expr, scope);
     } else if (stmt is SentenciaExpr) {
@@ -113,8 +115,10 @@ class Interpreter {
 
   Object? _evaluarBinaria(OperacionBinaria expr, Map<String, Object?> scope) {
     final Object? izq = _evaluar(expr.izq, scope);
-    if (expr.operador == '&&') return _comoBool(izq) && _comoBool(_evaluar(expr.der, scope));
-    if (expr.operador == '||') return _comoBool(izq) || _comoBool(_evaluar(expr.der, scope));
+    if (expr.operador == '&&')
+      return _comoBool(izq) && _comoBool(_evaluar(expr.der, scope));
+    if (expr.operador == '||')
+      return _comoBool(izq) || _comoBool(_evaluar(expr.der, scope));
 
     final Object? der = _evaluar(expr.der, scope);
 
@@ -148,7 +152,9 @@ class Interpreter {
   }
 
   Object? _evaluarLlamada(Llamada llamada, Map<String, Object?> scope) {
-    final List<Object?> args = llamada.argumentos.map((a) => _evaluar(a, scope)).toList();
+    final List<Object?> args = llamada.argumentos
+        .map((a) => _evaluar(a, scope))
+        .toList();
 
     switch (llamada.nombre) {
       case 'pinMode':
@@ -159,7 +165,9 @@ class Interpreter {
       case 'digitalWrite':
         final int pin = _validarPin(args[0] as int);
         final Object? valor = args[1];
-        final int valorEntero = valor is bool ? (valor ? 1 : 0) : (valor as int);
+        final int valorEntero = valor is bool
+            ? (valor ? 1 : 0)
+            : (valor as int);
         state.digital[pin] = valorEntero != 0 ? 1 : 0;
         state.tomarMuestra();
         return null;
@@ -183,7 +191,9 @@ class Interpreter {
       case 'analogRead':
         final int pin = args[0] as int;
         if (pin < 0 || pin > 5) {
-          throw ErrorEjecucion('Pin analogico invalido: A$pin (valido: A0-A5).');
+          throw ErrorEjecucion(
+            'Pin analogico invalido: A$pin (valido: A0-A5).',
+          );
         }
         return state.entradaAnalogica[pin] ?? 0;
 

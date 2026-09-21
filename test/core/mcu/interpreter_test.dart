@@ -9,7 +9,11 @@ void main() {
   group('Interpreter (subconjunto Arduino basico)', () {
     test('parpadeoLed: pinMode OUTPUT y alterna HIGH/LOW con delay', () {
       final MCUState mcu = MCUState();
-      final ResultadoEjecucion r = ejecutarPrograma(SamplePrograms.parpadeoLed, mcu, iteraciones: 4);
+      final ResultadoEjecucion r = ejecutarPrograma(
+        SamplePrograms.parpadeoLed,
+        mcu,
+        iteraciones: 4,
+      );
       expect(r.exitoso, isTrue);
       expect(r.state!.modoPin[13], 'OUTPUT');
       // Tras 4 iteraciones (HIGH,LOW cada una) el ultimo estado escrito es LOW.
@@ -19,28 +23,51 @@ void main() {
 
     test('botonEncienceLed: refleja el estado del boton en el LED', () {
       final MCUState mcuSuelto = MCUState()..digital[7] = 0;
-      final ResultadoEjecucion r1 = ejecutarPrograma(SamplePrograms.botonEncienceLed, mcuSuelto, iteraciones: 1);
+      final ResultadoEjecucion r1 = ejecutarPrograma(
+        SamplePrograms.botonEncienceLed,
+        mcuSuelto,
+        iteraciones: 1,
+      );
       expect(r1.state!.digital[13], 0);
 
       final MCUState mcuPresionado = MCUState()..digital[7] = 1;
-      final ResultadoEjecucion r2 = ejecutarPrograma(SamplePrograms.botonEncienceLed, mcuPresionado, iteraciones: 1);
+      final ResultadoEjecucion r2 = ejecutarPrograma(
+        SamplePrograms.botonEncienceLed,
+        mcuPresionado,
+        iteraciones: 1,
+      );
       expect(r2.state!.digital[13], 1);
     });
 
-    test('sensorConUmbral: enciende el LED solo si el sensor esta bajo el umbral', () {
-      final MCUState bajo = MCUState()..entradaAnalogica[0] = 150;
-      final ResultadoEjecucion r1 = ejecutarPrograma(SamplePrograms.sensorConUmbral, bajo, iteraciones: 1);
-      expect(r1.state!.digital[13], 1);
-      expect(r1.state!.serial, contains('150'));
+    test(
+      'sensorConUmbral: enciende el LED solo si el sensor esta bajo el umbral',
+      () {
+        final MCUState bajo = MCUState()..entradaAnalogica[0] = 150;
+        final ResultadoEjecucion r1 = ejecutarPrograma(
+          SamplePrograms.sensorConUmbral,
+          bajo,
+          iteraciones: 1,
+        );
+        expect(r1.state!.digital[13], 1);
+        expect(r1.state!.serial, contains('150'));
 
-      final MCUState alto = MCUState()..entradaAnalogica[0] = 800;
-      final ResultadoEjecucion r2 = ejecutarPrograma(SamplePrograms.sensorConUmbral, alto, iteraciones: 1);
-      expect(r2.state!.digital[13], 0);
-    });
+        final MCUState alto = MCUState()..entradaAnalogica[0] = 800;
+        final ResultadoEjecucion r2 = ejecutarPrograma(
+          SamplePrograms.sensorConUmbral,
+          alto,
+          iteraciones: 1,
+        );
+        expect(r2.state!.digital[13], 0);
+      },
+    );
 
     test('brilloPwm: analogWrite escribe en el pin PWM', () {
       final MCUState mcu = MCUState();
-      final ResultadoEjecucion r = ejecutarPrograma(SamplePrograms.brilloPwm, mcu, iteraciones: 2);
+      final ResultadoEjecucion r = ejecutarPrograma(
+        SamplePrograms.brilloPwm,
+        mcu,
+        iteraciones: 2,
+      );
       expect(r.exitoso, isTrue);
       // El ultimo analogWrite ejecutado en cada vuelta de loop() es 190.
       expect(r.state!.pwm[9], 190);
@@ -63,13 +90,19 @@ void loop() {
 }
 ''';
       final MCUState mcu = MCUState();
-      final ResultadoEjecucion r = ejecutarPrograma(codigo, mcu, iteraciones: 1);
+      final ResultadoEjecucion r = ejecutarPrograma(
+        codigo,
+        mcu,
+        iteraciones: 1,
+      );
       expect(r.exitoso, isTrue);
       expect(r.state!.digital[13], 1);
     });
 
-    test('bucle infinito: se detiene con LimiteDePasosExcedido, no cuelga la app', () {
-      const String codigo = '''
+    test(
+      'bucle infinito: se detiene con LimiteDePasosExcedido, no cuelga la app',
+      () {
+        const String codigo = '''
 void setup() {
 }
 
@@ -80,11 +113,17 @@ void loop() {
   }
 }
 ''';
-      final MCUState mcu = MCUState();
-      final ResultadoEjecucion r = ejecutarPrograma(codigo, mcu, iteraciones: 1, maxPasos: 5000);
-      expect(r.exitoso, isFalse);
-      expect(r.mensajeError, contains('limite'));
-    });
+        final MCUState mcu = MCUState();
+        final ResultadoEjecucion r = ejecutarPrograma(
+          codigo,
+          mcu,
+          iteraciones: 1,
+          maxPasos: 5000,
+        );
+        expect(r.exitoso, isFalse);
+        expect(r.mensajeError, contains('limite'));
+      },
+    );
 
     test('pin digital invalido produce un error de ejecucion legible', () {
       const String codigo = '''
@@ -119,8 +158,10 @@ void loop() {}
     });
 
     test('ErrorLexico se lanza ante un caracter no reconocido', () {
-      expect(() => analizar('void setup() { int x = 5 @ 3; } void loop() {}'),
-          throwsA(isA<ErrorLexico>()));
+      expect(
+        () => analizar('void setup() { int x = 5 @ 3; } void loop() {}'),
+        throwsA(isA<ErrorLexico>()),
+      );
     });
   });
 }

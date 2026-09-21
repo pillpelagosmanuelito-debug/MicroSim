@@ -22,8 +22,9 @@ class AsistenteScreen extends StatefulWidget {
 }
 
 class _AsistenteScreenState extends State<AsistenteScreen> {
-  final TextEditingController _controlador =
-      TextEditingController(text: SamplePrograms.parpadeoLed);
+  final TextEditingController _controlador = TextEditingController(
+    text: SamplePrograms.parpadeoLed,
+  );
   List<String> _explicacion = const [];
   List<String> _advertencias = const [];
   String? _error;
@@ -76,7 +77,10 @@ class _AsistenteScreenState extends State<AsistenteScreen> {
           ),
           const SizedBox(height: 12),
           if (_error != null) ConsolaWidget(lineas: [_error!], esError: true),
-          TarjetaExplicacionWidget(lineas: _explicacion, advertencias: _advertencias),
+          TarjetaExplicacionWidget(
+            lineas: _explicacion,
+            advertencias: _advertencias,
+          ),
         ],
       ),
     );

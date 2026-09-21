@@ -101,7 +101,11 @@ class VarRef extends Expr {
 }
 
 class OperacionBinaria extends Expr {
-  const OperacionBinaria({required this.operador, required this.izq, required this.der});
+  const OperacionBinaria({
+    required this.operador,
+    required this.izq,
+    required this.der,
+  });
   final String operador;
   final Expr izq;
   final Expr der;

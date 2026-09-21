@@ -20,7 +20,9 @@ class _ComunicacionScreenState extends ConsumerState<ComunicacionScreen> {
   @override
   void initState() {
     super.initState();
-    _controlador = TextEditingController(text: ref.read(comunicacionProvider).codigo);
+    _controlador = TextEditingController(
+      text: ref.read(comunicacionProvider).codigo,
+    );
   }
 
   @override
@@ -32,7 +34,9 @@ class _ComunicacionScreenState extends ConsumerState<ComunicacionScreen> {
   @override
   Widget build(BuildContext context) {
     final ComunicacionState estado = ref.watch(comunicacionProvider);
-    final ComunicacionNotifier notifier = ref.read(comunicacionProvider.notifier);
+    final ComunicacionNotifier notifier = ref.read(
+      comunicacionProvider.notifier,
+    );
 
     return Scaffold(
       appBar: AppBar(title: const Text('Modulo 5 · Comunicacion')),
@@ -84,11 +88,16 @@ class _ComunicacionScreenState extends ConsumerState<ComunicacionScreen> {
           else
             ConsolaWidget(lineas: estado.state?.serial ?? const []),
           const SizedBox(height: 12),
-          TarjetaExplicacionWidget(lineas: estado.explicacion, advertencias: estado.advertencias),
+          TarjetaExplicacionWidget(
+            lineas: estado.explicacion,
+            advertencias: estado.advertencias,
+          ),
           if (estado.state != null && estado.mensajeError == null) ...[
             const SizedBox(height: 12),
             OutlinedButton(
-              onPressed: () => ref.read(progresoProvider.notifier).registrarEjercicioCompletado('m5'),
+              onPressed: () => ref
+                  .read(progresoProvider.notifier)
+                  .registrarEjercicioCompletado('m5'),
               child: const Text('Marcar ejercicio como completado'),
             ),
           ],

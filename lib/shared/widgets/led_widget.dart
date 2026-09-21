@@ -20,7 +20,9 @@ class LedWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double opacidad = encendido ? (0.25 + 0.75 * (brillo / 255)).clamp(0.25, 1.0) : 0.08;
+    final double opacidad = encendido
+        ? (0.25 + 0.75 * (brillo / 255)).clamp(0.25, 1.0)
+        : 0.08;
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -32,7 +34,13 @@ class LedWidget extends StatelessWidget {
             color: color.withValues(alpha: opacidad),
             border: Border.all(color: color.withValues(alpha: 0.6), width: 2),
             boxShadow: encendido
-                ? [BoxShadow(color: color.withValues(alpha: opacidad * 0.6), blurRadius: 20, spreadRadius: 2)]
+                ? [
+                    BoxShadow(
+                      color: color.withValues(alpha: opacidad * 0.6),
+                      blurRadius: 20,
+                      spreadRadius: 2,
+                    ),
+                  ]
                 : null,
           ),
         ),
