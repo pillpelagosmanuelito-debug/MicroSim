@@ -96,9 +96,8 @@ class InicioScreen extends ConsumerWidget {
             return Card(
               child: InkWell(
                 borderRadius: BorderRadius.circular(14),
-                onTap: () =>
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (_) => m.pantalla)),
+                onTap: () => Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => m.pantalla)),
                 child: Padding(
                   padding: const EdgeInsets.all(14),
                   child: Column(

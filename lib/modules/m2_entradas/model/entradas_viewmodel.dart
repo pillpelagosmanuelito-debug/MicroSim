@@ -38,9 +38,8 @@ class EntradasState {
       codigo: codigo ?? this.codigo,
       botonPresionado: botonPresionado ?? this.botonPresionado,
       state: limpiarResultado ? null : (state ?? this.state),
-      mensajeError: limpiarResultado
-          ? null
-          : (mensajeError ?? this.mensajeError),
+      mensajeError:
+          limpiarResultado ? null : (mensajeError ?? this.mensajeError),
       explicacion: explicacion ?? this.explicacion,
       advertencias: advertencias ?? this.advertencias,
     );

@@ -12,10 +12,10 @@ class MuestraHistorial {
 /// `Serial.println`.
 class MCUState {
   MCUState()
-    : modoPin = {for (int i = 0; i < 14; i++) i: 'INPUT'},
-      digital = {for (int i = 0; i < 14; i++) i: 0},
-      pwm = {for (int i = 0; i < 14; i++) i: 0},
-      entradaAnalogica = {for (int i = 0; i < 6; i++) i: 0};
+      : modoPin = {for (int i = 0; i < 14; i++) i: 'INPUT'},
+        digital = {for (int i = 0; i < 14; i++) i: 0},
+        pwm = {for (int i = 0; i < 14; i++) i: 0},
+        entradaAnalogica = {for (int i = 0; i < 6; i++) i: 0};
 
   final Map<int, String> modoPin;
   final Map<int, int> digital;

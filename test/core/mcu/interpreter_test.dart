@@ -138,7 +138,9 @@ void loop() {}
       expect(r.mensajeError, contains('Pin digital invalido'));
     });
 
-    test('codigo con error de sintaxis se reporta sin lanzar excepcion sin capturar', () {
+    test(
+        'codigo con error de sintaxis se reporta sin lanzar excepcion sin capturar',
+        () {
       const String codigoRoto = '''
 void setup() {
   pinMode(13, OUTPUT

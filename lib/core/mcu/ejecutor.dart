@@ -8,11 +8,11 @@ import 'parser.dart';
 /// (lexico, sintactico, de ejecucion, o limite de pasos excedido).
 class ResultadoEjecucion {
   const ResultadoEjecucion.exito(this.state)
-    : mensajeError = null,
-      exitoso = true;
+      : mensajeError = null,
+        exitoso = true;
   const ResultadoEjecucion.error(this.mensajeError)
-    : state = null,
-      exitoso = false;
+      : state = null,
+        exitoso = false;
 
   final MCUState? state;
   final String? mensajeError;

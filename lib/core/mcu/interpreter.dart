@@ -7,7 +7,7 @@ import 'mcu_state.dart';
 /// validado en `calib/interpreter_prototype.py`.
 class Interpreter {
   Interpreter(this.programa, this.state, {this.maxPasos = 20000})
-    : globales = Map<String, Object?>.from(_constantes);
+      : globales = Map<String, Object?>.from(_constantes);
 
   final Programa programa;
   final MCUState state;
@@ -54,9 +54,8 @@ class Interpreter {
   void _ejecutarSentencia(Stmt stmt, Map<String, Object?> scope) {
     _tick();
     if (stmt is VarDecl) {
-      scope[stmt.nombre] = stmt.inicial != null
-          ? _evaluar(stmt.inicial!, scope)
-          : 0;
+      scope[stmt.nombre] =
+          stmt.inicial != null ? _evaluar(stmt.inicial!, scope) : 0;
     } else if (stmt is Asignacion) {
       scope[stmt.nombre] = _evaluar(stmt.expr, scope);
     } else if (stmt is SentenciaExpr) {
@@ -152,9 +151,8 @@ class Interpreter {
   }
 
   Object? _evaluarLlamada(Llamada llamada, Map<String, Object?> scope) {
-    final List<Object?> args = llamada.argumentos
-        .map((a) => _evaluar(a, scope))
-        .toList();
+    final List<Object?> args =
+        llamada.argumentos.map((a) => _evaluar(a, scope)).toList();
 
     switch (llamada.nombre) {
       case 'pinMode':
@@ -165,9 +163,8 @@ class Interpreter {
       case 'digitalWrite':
         final int pin = _validarPin(args[0] as int);
         final Object? valor = args[1];
-        final int valorEntero = valor is bool
-            ? (valor ? 1 : 0)
-            : (valor as int);
+        final int valorEntero =
+            valor is bool ? (valor ? 1 : 0) : (valor as int);
         state.digital[pin] = valorEntero != 0 ? 1 : 0;
         state.tomarMuestra();
         return null;

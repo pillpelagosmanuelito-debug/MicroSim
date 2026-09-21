@@ -73,8 +73,8 @@ class _EntradasScreenState extends ConsumerState<EntradasScreen> {
                           backgroundColor: estado.botonPresionado
                               ? Theme.of(context).colorScheme.primary
                               : Theme.of(context)
-                                    .colorScheme
-                                    .surfaceContainerHighest,
+                                  .colorScheme
+                                  .surfaceContainerHighest,
                           child: const Icon(Icons.touch_app),
                         ),
                       ),

@@ -88,7 +88,7 @@ class ComunicacionNotifier extends Notifier<ComunicacionState> {
 }
 
 final NotifierProvider<ComunicacionNotifier, ComunicacionState>
-comunicacionProvider =
+    comunicacionProvider =
     NotifierProvider<ComunicacionNotifier, ComunicacionState>(
-      ComunicacionNotifier.new,
-    );
+  ComunicacionNotifier.new,
+);

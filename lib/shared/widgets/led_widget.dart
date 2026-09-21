@@ -20,9 +20,8 @@ class LedWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double opacidad = encendido
-        ? (0.25 + 0.75 * (brillo / 255)).clamp(0.25, 1.0)
-        : 0.08;
+    final double opacidad =
+        encendido ? (0.25 + 0.75 * (brillo / 255)).clamp(0.25, 1.0) : 0.08;
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
